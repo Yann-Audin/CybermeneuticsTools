@@ -9,7 +9,7 @@
 # Audin, Yann. (2025). CybermeneuticsTools: A python script for augmented 
 # reading. Retrieved from https://github.com/Yann-Audin/CybermeneuticsTools
 
-"""
+"""{bibtex}
 @misc{cybermeneutics,
   author = {Yann Audin},
   title = {CybermeneuticsTools: A python script for augmented reading},
@@ -36,11 +36,11 @@
 
 # Options should be set in the main function, which is called when the script 
 # is run. To modify the parameters of the Corpus class, you can change the
-# arguments in the main function at the bottom of the script (line 510).
+# arguments in the main function at the bottom of the script (line 527).
 
 class Corpus:
     def __init__(self, path, sample = True, model_name = "en_core_web_sm", 
-                    min_sources = 4, min_count = 20, generate_only = False):
+                    min_sources = 4, min_count = 20):
         import subprocess
         import sys
         from tqdm import tqdm
@@ -48,7 +48,16 @@ class Corpus:
 
         print("""Downloading the required libraries...""")
         for req in requirements:
-            subprocess.check_call([sys.executable, "-m", "pip", "install", req])
+            # Check the the operating system and install the library accordingly
+            if sys.platform.startswith("win"):
+                subprocess.check_call([sys.executable, "-m", "pip", "install", req])
+            elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
+                subprocess.check_call([sys.executable, "-m", "pip", "install", req])
+            elif sys.platform.startswith("macos"):
+                subprocess.check_call([sys.executable, "-m", "pip", "install", req])
+            else:
+                print(f"Unsupported operating system: {sys.platform}. Please install {req} manually.")
+                return
         
         print("""Importing the relevant libraries...""")
         import spacy
@@ -56,7 +65,16 @@ class Corpus:
 
         print("""Downloading the model...""")
         try:     
-            subprocess.check_call([sys.executable, "-m", "spacy", "download", model_name])
+            # Check the operating system and download the model accordingly
+            if sys.platform.startswith("win"):
+                subprocess.check_call([sys.executable, "-m", "spacy", "download", model_name])
+            elif sys.platform.startswith("linux") or sys.platform.startswith("darwin"):
+                subprocess.check_call([sys.executable, "-m", "spacy", "download", model_name])
+            elif sys.platform.startswith("macos"):
+                subprocess.check_call([sys.executable, "-m", "spacy", "download", model_name])
+            else:
+                print(f"Unsupported operating system: {sys.platform}. Please download the model manually.")
+                return
             print("""Model downloaded successfully.""")
             print("""Loading the model...""")
             nlp = spacy.load(model_name)
@@ -86,8 +104,7 @@ class Corpus:
             else:
                 print("Invalid input. Please enter 'y' when you are done adding files.")
                 continue
-        if not generate_only:        
-            self.process()
+        self.process()
         self.generate()
                                   
     def initialize(self):
