@@ -1,6 +1,6 @@
 # CybermeneuticsTools
 
-v0.0
+v1.0
 
 ## What is CybermeneuticsTools?
 
@@ -28,6 +28,15 @@ python cybermeneutics.py
 Alternatively, you can use a Python IDE like PyCharm or Visual Studio Code to run the script.
 
 **Before running the software, you might want to change its parameters too better suit your needs. Running Cybermeneutics on a large corpus may take a few hours depending on the strenght of your processor, the chosen model and the lenght of the texts.**
+
+The software will download the necessary libraries and SpaCy models, and create a folder architecture before stopping with a prompt:
+
+```
+You can now add your files to the data folder.
+When ready, press 'y' and then enter to continue. You can at any time stop this script by pressing 'ctrl + c'.
+```
+
+Before pressing 'y', first add the ```.md``` or ```.txt``` files you want to study in the ```/data``` folder. If these files are logically ordered in folders, you should copy that architecture in the data folder as it will be replicated in the viewer. 
 
 #### How to use a virtual environment
 
@@ -60,8 +69,11 @@ List of parameters:
 - ```path```: The path is the name of the new folder that will be created during the initialization of the softare. This folder will receive the data that the user wants to transform into hypertexts, the entity dictionary and the viewer-ready files. (Default is "Cybermeneutics");
 - ```model_name```: The name of the SpaCy model to be used for named entity recogntion. (Default is ```en_core_web_sm``` which has a precision of $0.84$.)
 - ```min_sources```: The minimum number of sources in which an entity must appear to be included in the index cards. (Default is 2);
-- ```min_count```: The minimum number of times an entity must appear in the corpus to be included in the index cards. (Default is 10);
-- [TODO]
+- ```min_count```: The minimum number of times an entity must appear in the corpus to be included in the index cards. (Default is 10).
+
+#### Custom list 
+
+When you initialize the program, an empty file named ```list.txt``` is created. Terms saved in this list will be treated as entities, and index cards will be created for the terms. To use a custom list, enter one word per line in the file, and save the file before processing the files.
 
 #### Chosing the right SpaCy model
 
@@ -69,11 +81,13 @@ The SpaCy library offers multiple pre-trined models for different languages and 
 
 The name of the model can be changed in the parameters of the software. You can find the list of available models in English here: [SpaCy English models](https://spacy.io/models/en), in French here: [SpaCy French models](https://spacy.io/models/fr), and in other languages here: [Spacy models](https://spacy.io/models). 
 
+### How to view the files
+
+To visualize the files as hypertexts, the ```/viewer``` folder should be opened using either Zettlr or Obsidian. Zettlr is an open source software for markdown note taking. Obsidian is not open source, but it is free to use on local files and is better at handling large amount of files and folders. 
+
 ### How to contribute
 
-Suggest features
-
-Contribute code in the development branch
+The two mains way to contribute to Cybermeneutics is to suggest new features, and contribute code. The main way to do so is to contact me directly or use issues (see next section). 
 
 ### How to report bugs
 
@@ -104,7 +118,7 @@ Find here the fairly short [MIT License](LICENSE) license under which this tool 
 
 ## Contact
 
-[yann.audin@umontreal.ca](mailto:yann.audin@umontreal.ca)
+You can contact me at [yann.audin@umontreal.ca](mailto:yann.audin@umontreal.ca), although I might be more reactive to issues opened on the github.
 
 ## Acknowledgements
 
