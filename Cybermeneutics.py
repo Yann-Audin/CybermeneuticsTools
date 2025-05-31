@@ -268,7 +268,7 @@ The author acknowledges the direct financial support from the following institut
 
 The author is grateful for the support received from the following institutions:
 
-- Chaire de recherche du Canada en humanités numériques;
+- Chaire de recherche du Canada sur les écritures numériques;
 - Centre de recherche interuniversitaire sur les humanités numériques (CRIHN);
 - Université de Montréal.
 
