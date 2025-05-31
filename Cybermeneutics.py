@@ -295,7 +295,7 @@ Cybermeneutics was coded on VS Code with limited use of AI tools, specifically f
 
         print("""Creating the .obsidian folder and file""")
         obs_path = self.viewer_path + "./obsidian/graph.json"
-        obs_content = {
+        obs_content = """{
   "collapse-filter": true,
   "search": "",
   "showTags": false,
@@ -352,7 +352,7 @@ Cybermeneutics was coded on VS Code with limited use of AI tools, specifically f
   "linkDistance": 166,
   "scale": 0.20640086681036243,
   "close": false
-}
+}"""
         if self._create_file(obs_path, obs_content):
             pass
         else:
@@ -408,7 +408,7 @@ This is an example of a novel with named characters like Jacob Williamson and Wi
         relative_path = relative_path.replace(".md", "")
         relative_path = relative_path.replace("\\", "/")
         title = self._remove_path_from_title(title)
-        return f"[[files/{relative_path}|{title}]]"
+        return f"[[FILES/{relative_path}|{title}]]"
 
     def _read_word_list(self):
         with open(self.path + "/list.txt", "r", encoding="utf-8") as f:
@@ -664,7 +664,7 @@ This is an example of a novel with named characters like Jacob Williamson and Wi
                         return matched_text
                 
                 # Create the exact path format requested
-                link_path = f"entity/{word_type}/{link_word}"
+                link_path = f"ENTITY/{word_type}/{link_word}"
                 return f"[[{link_path}|{matched_text}]]"
             
             text = re.sub(pattern, replacer, text, flags=re.IGNORECASE)
@@ -682,7 +682,7 @@ This is an example of a novel with named characters like Jacob Williamson and Wi
             # Generate page for items that meet criteria OR are from the word list
             if (len(sources) >= self.min_sources and total_count >= self.min_count) or self.dictionary[element]["type"] == "LIST":
                 entity_type = self.dictionary[element]["type"]
-                path = self.viewer_path + "/" + entity_type + "/" + element + ".md"
+                path = self.viewer_path + "/ENTITY/" + entity_type + "/" + element + ".md"
                 
                 # Use original text with spaces if available, otherwise use the key
                 display_name = self.dictionary[element].get("original_text", element.replace("_", " "))
@@ -719,7 +719,7 @@ This is an example of a novel with named characters like Jacob Williamson and Wi
             if relative_path.startswith("/"):
                 relative_path = relative_path[1:]
             
-            viewer_path = self.viewer_path + "/" + relative_path
+            viewer_path = self.viewer_path + "/FILES/" + relative_path
             viewer_path = viewer_path.replace(".txt", ".md")
             
             self._create_file(viewer_path, text)
@@ -730,7 +730,7 @@ This is an example of a novel with named characters like Jacob Williamson and Wi
 def main():
     # The main function calls the corpus class with the desired parameters.
     corpus = Corpus("Cybermeneutics_corpus", # 
-                    model_name = "en_core_web_trf", # See the README.md for information on models
+                    model_name = "en_core_web_sm", # See the README.md for information on models
                     sample = True, # True or False, add a sample text to the data folder
                     min_count = 1, # How many total instances necto have an index cardessary 
                     min_sources = 1 # How many sources necessary to have an index card
