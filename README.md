@@ -93,6 +93,10 @@ The two mains way to contribute to Cybermeneutics is to suggest new features, an
 
 You can help me by reporting any issue you encounter, either by contacting me directly, or by opening an issue on github. Note that my mailing box is, has been so far, and is likely to always be a *hot mess*. Github has a [tutorial on how to create an issue](https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue) which explains it better than I would and I am more likely to answer an issue than an email. 
 
+### Limits of the tool
+
+Cybermeneutics is mostly limited by the main package it uses: SpaCy models are not perfect and they are not adequate for every type of text. Older texts, poetry and plays might have low precision in terms of named entity recognition. I would suggest modifying the source code so that it re-formats your data in the named entity recognition process to avoid line changes which are known to confuse SpaCy models. 
+
 ### How to cite
 
 If you use this code, please cite it as follows: 
