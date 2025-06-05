@@ -4,7 +4,9 @@ v1.0
 
 ## What is CybermeneuticsTools?
 
-CybermeneuticsTools is a Python software designed to transform textual data into a network of hypertexts with index cards for the names entities in a given corpus. It aims to facilitate the humanistic inquiry into interconnected texts, 
+CybermeneuticsTools is a Python software designed to transform textual data into a network of hypertexts with index cards for the names entities in a given corpus. 
+
+It aims to facilitate the humanistic inquiry into interconnected texts.
 
 ## How-tos
 
